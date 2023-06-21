@@ -24,12 +24,32 @@ const persons = [
     data: ["HTML", "Reactjs", "C++"]
   },
 ]
+//list with flat list
+const users = [
+  {
+    id: 1,
+    name: "C++",
+  },
+  {
+    id: 2,
+    name: "java",
+  },
+  {
+    id: 3,
+    name: "Angular",
+  },
+  {
+    id: 4,
+    name: "Reactjs",
+  },
+]
 export default function App() {
   const [name, setName] = useState('ATIQA');
   const [age, setAge] = useState('19');
 
   return (
     <View style={{ flex: 1, backgroundColor: '#BFD7ED' }}>
+    <ScrollView horizontal={false}>
       <Text style={{ fontSize: 30, fontWeight: 'bold', paddingLeft: 100, paddingTop: 90, paddingBottom: 40 }}> pressable</Text>
       <Text style={{ fontSize: 10, paddingLeft: 107 }}>Enter name</Text>
       <TextInput style={styles.input} placeholder='e.g. John'></TextInput>
@@ -47,8 +67,12 @@ export default function App() {
         renderItem={({ item }) => <Text style={{ fontSize: 20, marginLeft: 60, paddingTop: 10 }}>{item}</Text>}
         renderSectionHeader={({ section: { title } }) => (<Text style={{ fontSize: 25, color: '#000080', fontWeight: 'bold', marginLeft: 40, paddingTop: 10 }}>{title} </Text>)}
       ></SectionList>
-
+      <FlatList data={users} renderItem={({item})=> <Text style={styles.item} >{item.name}</Text>}
+        keyExtractor={item=>item.id} />
       <StatusBar style="auto" />
+      </ScrollView>
+
+     
 
     </View>
   );
@@ -66,10 +90,11 @@ const styles = StyleSheet.create({
   },
   item: {
     padding: 10,
-    color: "blue",
-    backgroundColor: 'blue',
-    borderWidth: 1,
-    margin: 10,
+    color: "white",
+    backgroundColor: 'grey',
+    borderWidth: 3,
+    margin: 2,
+    fontWeight:'bold'
   },
   input: {
     paddingLeft: 10,
