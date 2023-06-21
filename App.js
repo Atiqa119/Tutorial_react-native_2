@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { StyleSheet, Text, View, SectionList, TextInput, Pressable } from 'react-native';
-
+//SectionList
 const persons = [
   {
     id: 1,
@@ -43,18 +43,23 @@ const users = [
     name: "Reactjs",
   },
 ]
+//TextInput
 export default function App() {
   const [name, setName] = useState('ATIQA');
   const [age, setAge] = useState('19');
 
   return (
+    //view
     <View style={{ flex: 1, backgroundColor: '#BFD7ED' }}>
+  //scrollview
     <ScrollView horizontal={false}>
       <Text style={{ fontSize: 30, fontWeight: 'bold', paddingLeft: 100, paddingTop: 90, paddingBottom: 40 }}> pressable</Text>
       <Text style={{ fontSize: 10, paddingLeft: 107 }}>Enter name</Text>
+  //textinput
       <TextInput style={styles.input} placeholder='e.g. John'></TextInput>
       <Text style={{ fontSize: 10, paddingLeft: 107 }}>Enter age</Text>
       <TextInput style={styles.input} placeholder='e.g. 22'></TextInput>
+  //pressable
       <Pressable
         onPressIn={() => { console.warn("press in") }}
         onPressOut={() => { console.warn("press out") }}
@@ -62,11 +67,13 @@ export default function App() {
         <Text style={styles.PressableBtn}> Login</Text>
       </Pressable>
       <Text style={{ fontSize: 30, fontWeight: 'bold', paddingLeft: 100, paddingTop: 600 }}>list with Sectionlist  </Text>
+     //sectionList   
       <SectionList
         sections={persons}
         renderItem={({ item }) => <Text style={{ fontSize: 20, marginLeft: 60, paddingTop: 10 }}>{item}</Text>}
         renderSectionHeader={({ section: { title } }) => (<Text style={{ fontSize: 25, color: '#000080', fontWeight: 'bold', marginLeft: 40, paddingTop: 10 }}>{title} </Text>)}
       ></SectionList>
+          //flatlist
       <FlatList data={users} renderItem={({item})=> <Text style={styles.item} >{item.name}</Text>}
         keyExtractor={item=>item.id} />
       <StatusBar style="auto" />
